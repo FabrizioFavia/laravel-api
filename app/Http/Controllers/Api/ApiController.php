@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     public function index(){
-        $projects = Project::with("technologies", "type")->paginate(4);
+        $projects = Project::with("technologies", "type")->paginate(5);
 
         $response = [
             'success'=> true,

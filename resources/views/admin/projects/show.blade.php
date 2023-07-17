@@ -9,7 +9,7 @@
                                 <h3>{{ $project->title }}</h3>
                             </div>
                             <div class="card-body d-flex flex-column justify-content-between">
-                                <img class="projImg" src="{{ asset("storage/" . $project->image) }}" alt="">
+                                <img class="projImg" src="{{ $project->image ? asset("storage/" . $project->image) : asset("public/storage/placeholders/placeholder.png") }}" alt="">
                                 <p>{{$project->description}}</p>
                             </div>
                             <div>

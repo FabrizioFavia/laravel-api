@@ -53,9 +53,9 @@
                 {{-- SELECT --}}
 
                 <div class="mb-3">
-                    <label class=" fs-6" for="difficoltà">Seleziona difficoltà</label>
+                    <label class=" fs-6" for="difficoltà">Seleziona tipologia</label>
 
-                    <select name="type_id" id="difficoltà">Seleziona difficoltà
+                    <select name="type_id" id="difficoltà">Seleziona tipologia
                         @foreach ($types as $type)
                             <option value="{{ $type->id }}">{{ $type->type }}</option>
                         @endforeach

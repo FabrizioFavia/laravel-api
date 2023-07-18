@@ -13,7 +13,7 @@ class UpdateTechnologyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateTechnologyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "title" =>'required|min:4|max:150',
+            'image'=>'required|max:20480',
+            "description"=>'required|min:4|max:255',
+            'type_id'=>['exists:types,id'],
+            'technologies'=> 'nullable|exists:technologies,id'
         ];
     }
 }

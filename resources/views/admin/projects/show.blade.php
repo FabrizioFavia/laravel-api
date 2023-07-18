@@ -20,8 +20,7 @@
                             @endforeach
                         </div>
                         <div class="btnContainer mt-3">
-                            <button class="btn btn-primary me-3"><a href="{{ route('admin.projects.edit', $project->id) }}">Modifica
-                                prodotto</a></button>
+                            <button class="btn btn-primary text-white me-3"><a class="text-white" href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a></button>
                             <div class="btn btn-danger">Cancella</div>
                         </div>
                     </div>
@@ -33,7 +32,7 @@
     </div>
 @endsection
 
-<style>
+<style scoped>
     .projCard {
         width: 68vw;
         height: 400px;
@@ -45,5 +44,9 @@
         object-fit: cover;
         object-position: top;
         margin-bottom: 1em;
+    }
+
+    .btnContainer a{
+        text-decoration: none
     }
 </style>

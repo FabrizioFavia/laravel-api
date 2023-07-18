@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container-fluid mt-4 d-flex flex-wrap justify-content-between">
+          
+       
         <div class="row w-100">
             <h1 class="mb-5">Inserisci un nuovo progetto</h1>
 
@@ -21,12 +23,12 @@
 
                 <div class="mb-3">
                     <label class="mb-1 fs-6" for="title">Titolo Progetto</label>
-                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control">
+                    <input type="text" name="title" id="title" value="{{ $project->title }}" class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label class="mb-1 fs-6" for="description">Descrizione</label>
-                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $project->description }}</textarea>
                 </div>
 
                 <div class="mb-3">
@@ -62,7 +64,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Inserisci</button>
+                <input class="form-control my-5 w-25 bg-primary" type="submit" value="Invia">
             </form>
 
         </div>

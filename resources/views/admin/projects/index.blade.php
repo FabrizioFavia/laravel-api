@@ -12,10 +12,10 @@
                         </div>
                         <div class="card-body d-flex flex-column justify-content-between">
                             <div>
-                                <img class="projImg" src="{{ $project->image ? asset("storage/" . $project->image) : asset("public/storage/placeholders/placeholder.png") }}" alt="">
+                                <img class="projImg" src="{{ asset('storage/' . $project->image)}}" alt="">
 
                                 <p class="mb-3">{{ $project->description }}</p>
-                                <p>Tipo: {{$project->type->type}}</p>
+                                <p><strong>Tipo:</strong> {{$project->type->type}}</p>
                             </div>
                             <div><a class="btn btn-primary" href="{{ route('admin.projects.show', $project) }}">Scopri di
                                     più</a></div>

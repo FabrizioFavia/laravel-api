@@ -20,7 +20,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('admin.projects.index',compact('projects'));
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -30,9 +30,9 @@ class ProjectController extends Controller
      */
     public function create()
 
-    
+
     {
-        $types= Type::all();
+        $types = Type::all();
         $technologies = Technology::all();
         return view('admin.projects.create', compact('types', 'technologies'));
     }
@@ -47,9 +47,9 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
-        $img_path = Storage::put('uploads', $data['image']); 
-        /* $img_path=$data['image']->store('uploads'); */
-        $data['image']= $img_path;
+        $img_path = Storage::put('uploads', $data['image']);
+        $img_path = $data['image']->store('uploads');
+        $data['image'] = $img_path;
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
@@ -78,7 +78,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $types= Type::all();
+        $types = Type::all();
         $technologies = Technology::all();
         return view("admin.projects.edit", compact('project', 'technologies', 'types'));
     }
@@ -95,10 +95,10 @@ class ProjectController extends Controller
         $data = $request->validated();
         $project->fill($data);
         $project->update($data);
-        $project->technologies()->sync($data['technologies']); 
-        
+        $project->technologies()->sync($data['technologies']);
 
-        return redirect()->route('admin.projects.show', $project->id );
+
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
     /**
@@ -109,6 +109,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->technologies()->detach();
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }
